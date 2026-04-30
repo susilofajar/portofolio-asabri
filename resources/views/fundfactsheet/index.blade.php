@@ -1,30 +1,34 @@
 <x-app-layout>
     <x-slot name="pageTitle">Fund Fact Sheet</x-slot>
 
-    <div class="table-wrapper">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h5 class="mb-0" style="color: var(--asabri-navy);">
-                <i class="fas fa-file-alt"></i> Daftar Fund Fact Sheet
+    <div class="content-card">
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+            <h5 class="mb-0" style="color: var(--asabri-navy); font-weight: 700;">
+                <i class="fas fa-file-alt me-2"></i> Daftar Fund Fact Sheet
             </h5>
 
             <div class="d-flex gap-2">
                 <form action="{{ route('fundfactsheet.index') }}" method="GET" class="d-flex gap-2">
-                    <input type="text" name="keyword" class="form-control form-control-sm" placeholder="Cari judul..."
-                        value="{{ request('keyword') }}">
-                    <input type="date" name="date" class="form-control form-control-sm" value="{{ request('date') }}">
-                    <button type="submit" class="btn btn-sm btn-asabri">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                        <input type="text" name="keyword" class="form-control" placeholder="Cari judul..."
+                            value="{{ request('keyword') }}">
+                    </div>
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="date" name="date" class="form-control" value="{{ request('date') }}">
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-asabri shadow-sm">
                         <i class="fas fa-search"></i>
                     </button>
                     @if(request('keyword') || request('date'))
-                        <a href="{{ route('fundfactsheet.index') }}" class="btn btn-sm btn-secondary" title="Reset">
+                        <a href="{{ route('fundfactsheet.index') }}" class="btn btn-sm btn-light border shadow-sm" title="Reset">
                             <i class="fas fa-times"></i>
                         </a>
                     @endif
                 </form>
 
                 @if(canManage())
-                    <button class="btn btn-asabri" data-bs-toggle="modal" data-bs-target="#uploadModal">
-                        <i class="fas fa-upload"></i> Upload PDF
+                    <button class="btn btn-asabri btn-sm shadow-sm" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                        <i class="fas fa-plus me-1"></i> Upload
                     </button>
                 @endif
             </div>

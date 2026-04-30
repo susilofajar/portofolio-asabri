@@ -338,62 +338,110 @@
     <style>
         .overview-section {
             background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: var(--border-radius-lg);
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 41, 102, 0.05);
+            transition: box-shadow 0.3s;
+        }
+        
+        .overview-section:hover {
+            box-shadow: var(--card-shadow-hover);
         }
 
         .category-card {
             background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
+            border: 1px solid rgba(0, 41, 102, 0.06);
+            border-radius: var(--border-radius-md);
             overflow: hidden;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
             cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            position: relative;
+        }
+        
+        .category-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--asabri-navy), var(--asabri-gold));
+            opacity: 0;
+            transition: 0.4s;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border-color: var(--asabri-navy);
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(0, 41, 102, 0.12);
+        }
+        
+        .category-card:hover::after {
+            opacity: 1;
         }
 
         .category-image {
             width: 100%;
-            height: 160px;
+            height: 180px;
             background: #f5f6fa;
             overflow: hidden;
+            position: relative;
         }
 
         .category-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-image img {
+            transform: scale(1.05);
         }
 
         .category-content {
-            padding: 15px;
+            padding: 20px;
         }
 
         .category-title {
             color: var(--asabri-navy);
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 5px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
 
         .category-manager {
-            color: #666;
-            font-size: 12px;
-            margin-bottom: 8px;
+            color: var(--asabri-grey);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         .category-description {
-            color: #888;
-            font-size: 13px;
-            line-height: 1.4;
+            color: #64748B;
+            font-size: 0.9rem;
+            line-height: 1.5;
             margin-bottom: 0;
+        }
+        
+        .btn-outline-asabri {
+            color: var(--asabri-navy);
+            border: 1px solid var(--asabri-navy);
+            background: transparent;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-asabri:hover {
+            background: linear-gradient(135deg, var(--asabri-navy) 0%, var(--asabri-blue) 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 41, 102, 0.15);
         }
     </style>
     <!-- Image Preview Modal -->

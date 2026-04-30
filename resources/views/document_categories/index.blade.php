@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="pageTitle">Kelola Kategori Dokumen</x-slot>
 
-    <div class="table-wrapper">
+    <div class="content-card">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h5 class="mb-1" style="color: var(--asabri-navy);">

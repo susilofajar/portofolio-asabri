@@ -18,22 +18,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'superadmin',
         ]);
 
-        // Create Admin
-        User::create([
-            'name' => 'Admin ASABRI',
-            'email' => 'admin@asabri.com',
-            'password' => Hash::make('password123'),
-            'role' => 'admin',
-        ]);
-
-        // Create User
-        User::create([
-            'name' => 'User Demo',
-            'email' => 'user@asabri.com',
-            'password' => Hash::make('password123'),
-            'role' => 'user',
-        ]);
-
         // Call other seeders
         $this->call([
             DocumentCategorySeeder::class,

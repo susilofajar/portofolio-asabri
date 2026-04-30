@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="pageTitle">Laporan Mingguan</x-slot>
 
-    <div class="table-wrapper">
+    <div class="content-card">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h5 class="mb-0" style="color: var(--asabri-navy);">
                 <i class="fas fa-calendar-week"></i> Daftar Laporan Mingguan

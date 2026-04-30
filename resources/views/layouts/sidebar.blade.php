@@ -1,14 +1,18 @@
 <div class="sidebar">
-    <div class="logo">
-        <img src="{{ asset('https://faq.asabri.co.id/assets/images/logo_asabri_2.svg') }}" alt="Logo"
-            style="height: 100px;">
-            <p style="font-size: 70;">Monitoring & Laporan Investasi</p>
+    <div class="logo-container">
+        <img src="{{ asset('https://faq.asabri.co.id/images/logo_asabri_2.svg') }}" alt="Logo"
+            style="height: 80px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));">
+        <div class="mt-3">
+            <div
+                style="color: white; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                Monitoring & Laporan Investasi</div>
+        </div>
     </div>
 
     <nav>
-        <!--<a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
             <i class="fas fa-home"></i> Dashboard
-        </a>-->
+        </a>
 
         <a href="{{ route('overview') }}" class="nav-link {{ request()->routeIs('overview') ? 'active' : '' }}">
             <i class="fas fa-th-large"></i> Overview
@@ -29,10 +33,10 @@
             <i class="fas fa-calendar-alt"></i> Laporan Bulanan
         </a>
 
-        <!--<a href="{{ route('laporan.tahunan.index') }}"
+        <a href="{{ route('laporan.tahunan.index') }}"
             class="nav-link {{ request()->routeIs('laporan.tahunan.*') ? 'active' : '' }}">
             <i class="fas fa-calendar"></i> Laporan Tahunan
-        </a>-->
+        </a>
 
         @auth
             @if(auth()->user()->canManage())

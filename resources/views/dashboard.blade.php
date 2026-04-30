@@ -23,18 +23,18 @@
     <!-- Charts Row -->
     <div class="row g-4 mb-4">
         <div class="col-md-8">
-            <div class="table-wrapper">
-                <h5 class="mb-4" style="color: var(--asabri-navy);">
-                    <i class="fas fa-chart-line"></i> Statistik Upload Laporan
+            <div class="content-card">
+                <h5 class="mb-4" style="color: var(--asabri-navy); font-weight: 700;">
+                    <i class="fas fa-chart-line me-2"></i> Statistik Upload Laporan
                 </h5>
                 <canvas id="uploadChart" height="80"></canvas>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="table-wrapper">
-                <h5 class="mb-4" style="color: var(--asabri-navy);">
-                    <i class="fas fa-pie-chart"></i> Distribusi Laporan
+            <div class="content-card">
+                <h5 class="mb-4" style="color: var(--asabri-navy); font-weight: 700;">
+                    <i class="fas fa-pie-chart me-2"></i> Distribusi Laporan
                 </h5>
                 <canvas id="distributionChart"></canvas>
             </div>
@@ -44,9 +44,9 @@
     <!-- Latest Uploads & User Stats -->
     <div class="row g-4">
         <div class="col-md-8">
-            <div class="table-wrapper">
-                <h5 class="mb-4" style="color: var(--asabri-navy);">
-                    <i class="fas fa-clock"></i> Upload Terbaru
+            <div class="content-card">
+                <h5 class="mb-4" style="color: var(--asabri-navy); font-weight: 700;">
+                    <i class="fas fa-clock me-2"></i> Upload Terbaru
                 </h5>
 
                 @if($latestUploads->count() > 0)
@@ -82,9 +82,9 @@
 
         @auth
             <div class="col-md-4">
-                <div class="table-wrapper">
-                    <h5 class="mb-4" style="color: var(--asabri-navy);">
-                        <i class="fas fa-users"></i> Statistik User
+                <div class="content-card">
+                    <h5 class="mb-4" style="color: var(--asabri-navy); font-weight: 700;">
+                        <i class="fas fa-users me-2"></i> Statistik User
                     </h5>
 
                     <div class="d-flex justify-content-between align-items-center mb-3 p-3"
@@ -144,16 +144,16 @@
                         {{ $totalLaporanTahunan }}
                     ],
                     backgroundColor: [
-                        'rgba(25, 118, 210, 0.8)',
-                        'rgba(56, 142, 60, 0.8)',
-                        'rgba(245, 124, 0, 0.8)',
-                        'rgba(123, 31, 162, 0.8)'
+                        'rgba(0, 41, 102, 0.85)',
+                        'rgba(0, 64, 128, 0.85)',
+                        'rgba(212, 175, 55, 0.85)',
+                        'rgba(244, 208, 63, 0.85)'
                     ],
                     borderColor: [
-                        'rgba(25, 118, 210, 1)',
-                        'rgba(56, 142, 60, 1)',
-                        'rgba(245, 124, 0, 1)',
-                        'rgba(123, 31, 162, 1)'
+                        'rgba(0, 41, 102, 1)',
+                        'rgba(0, 64, 128, 1)',
+                        'rgba(212, 175, 55, 1)',
+                        'rgba(244, 208, 63, 1)'
                     ],
                     borderWidth: 2
                 }]
@@ -191,10 +191,10 @@
                         {{ $totalLaporanTahunan }}
                     ],
                     backgroundColor: [
-                        'rgba(25, 118, 210, 0.8)',
-                        'rgba(56, 142, 60, 0.8)',
-                        'rgba(245, 124, 0, 0.8)',
-                        'rgba(123, 31, 162, 0.8)'
+                        'rgba(0, 41, 102, 0.85)',
+                        'rgba(0, 64, 128, 0.85)',
+                        'rgba(212, 175, 55, 0.85)',
+                        'rgba(244, 208, 63, 0.85)'
                     ],
                     borderWidth: 2,
                     borderColor: '#fff'
