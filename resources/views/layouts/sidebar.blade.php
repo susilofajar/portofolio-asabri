@@ -10,9 +10,9 @@
     </div>
 
     <nav>
-        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+        <!-- <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
             <i class="fas fa-home"></i> Dashboard
-        </a>
+        </a> -->
 
         <a href="{{ route('overview') }}" class="nav-link {{ request()->routeIs('overview') ? 'active' : '' }}">
             <i class="fas fa-th-large"></i> Overview
@@ -33,10 +33,10 @@
             <i class="fas fa-calendar-alt"></i> Laporan Bulanan
         </a>
 
-        <a href="{{ route('laporan.tahunan.index') }}"
+        <!-- <a href="{{ route('laporan.tahunan.index') }}"
             class="nav-link {{ request()->routeIs('laporan.tahunan.*') ? 'active' : '' }}">
             <i class="fas fa-calendar"></i> Laporan Tahunan
-        </a>
+        </a> -->
 
         @auth
             @if(auth()->user()->canManage())
