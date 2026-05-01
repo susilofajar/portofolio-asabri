@@ -42,12 +42,15 @@
             </button>
         </div>
 
-        <div class="text-center">
-            @if (Route::has('password.request'))
-                <a class="text-decoration-none small text-muted hover-text-primary" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-        </div>
+        @if (Route::has('register'))
+            <div class="text-center mt-3">
+                <p class="small text-muted mb-0">
+                    Belum punya akun? 
+                    <a href="{{ route('register') }}" class="text-asabri text-decoration-none fw-bold hover-underline">
+                        Daftar Sekarang
+                    </a>
+                </p>
+            </div>
+        @endif
     </form>
 </x-guest-layout>

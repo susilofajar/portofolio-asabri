@@ -75,10 +75,10 @@
                                         </button>
 
                                         <form action="{{ route('laporan.mingguan.destroy', $laporan->id) }}" method="POST"
-                                            class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">
+                                            <button type="submit" class="btn btn-sm btn-danger delete-confirm">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>

@@ -7,9 +7,11 @@
                 <i class="fas fa-users"></i> Daftar Pengguna
             </h5>
 
+            @if(auth()->user()->role === 'superadmin')
             <button class="btn btn-asabri" data-bs-toggle="modal" data-bs-target="#addModal">
                 <i class="fas fa-plus"></i> Tambah User
             </button>
+            @endif
         </div>
 
         <div class="table-responsive">
@@ -47,11 +49,10 @@
                                 </button>
 
                                 @if($user->id !== auth()->id())
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline"
-                                        onsubmit="return confirm('Yakin ingin menghapus user ini?')">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button type="submit" class="btn btn-sm btn-danger delete-confirm" data-message="User ini akan dihapus secara permanen!">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
@@ -105,7 +106,9 @@
                             <select name="role" class="form-control" required>
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
+                                @if(auth()->user()->role === 'superadmin')
                                 <option value="superadmin">Super Admin</option>
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -140,6 +143,7 @@
                             <input type="email" name="email" id="edit_email" class="form-control" required>
                         </div>
 
+                        @if(auth()->user()->role === 'superadmin')
                         <div class="mb-3">
                             <label class="form-label">Password Baru (kosongkan jika tidak diubah)</label>
                             <input type="password" name="password" class="form-control" minlength="8">
@@ -149,13 +153,16 @@
                             <label class="form-label">Konfirmasi Password Baru</label>
                             <input type="password" name="password_confirmation" class="form-control" minlength="8">
                         </div>
+                        @endif
 
                         <div class="mb-3">
                             <label class="form-label">Role</label>
                             <select name="role" id="edit_role" class="form-control" required>
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
+                                @if(auth()->user()->role === 'superadmin')
                                 <option value="superadmin">Super Admin</option>
+                                @endif
                             </select>
                         </div>
                     </div>

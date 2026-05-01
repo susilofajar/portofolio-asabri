@@ -15,6 +15,10 @@ class PasswordController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
+        if (auth()->user()->role !== 'superadmin') {
+            return back()->with('error', 'Hanya SuperAdmin yang memiliki akses untuk mengubah password.');
+        }
+
         $validated = $request->validateWithBag('updatePassword', [
             'current_password' => ['required', 'current_password'],
             'password' => ['required', Password::defaults(), 'confirmed'],

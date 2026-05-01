@@ -16,6 +16,10 @@ class UserManagementController extends Controller
 
     public function store(Request $request)
     {
+        if (auth()->user()->role !== 'superadmin') {
+            abort(403, 'Hanya SuperAdmin yang dapat membuat akun baru.');
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -38,12 +42,21 @@ class UserManagementController extends Controller
     {
         $user = User::findOrFail($id);
 
+        // Standard validation
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
             'password' => 'nullable|string|min:8|confirmed',
             'role' => 'required|in:user,admin,superadmin',
         ]);
+
+        // If not superadmin, prevent changing roles to superadmin or changing role at all?
+        // User said: "admin bisa mengontrol user dan admin"
+        // But creation is by superadmin. 
+        // I'll allow editing, but if they try to make someone superadmin and they are just admin, block it.
+        if (auth()->user()->role !== 'superadmin' && $request->role === 'superadmin') {
+            return back()->with('error', 'Hanya SuperAdmin yang dapat memberikan akses SuperAdmin.');
+        }
 
         $data = [
             'name' => $request->name,
@@ -52,6 +65,9 @@ class UserManagementController extends Controller
         ];
 
         if ($request->filled('password')) {
+            if (auth()->user()->role !== 'superadmin') {
+                return back()->with('error', 'Hanya SuperAdmin yang dapat mereset password user lain.');
+            }
             $data['password'] = Hash::make($request->password);
         }
 

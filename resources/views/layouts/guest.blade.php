@@ -17,6 +17,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         :root {
@@ -106,6 +108,14 @@
             border-color: var(--asabri-blue);
             box-shadow: 0 0 0 4px rgba(0, 90, 158, 0.1);
         }
+
+        .text-asabri {
+            color: var(--asabri-navy) !important;
+        }
+
+        .hover-underline:hover {
+            text-decoration: underline !important;
+        }
     </style>
 </head>
 
@@ -124,6 +134,36 @@
             {{ $slot }}
         </div>
     </div>
+
+    @if(session('status'))
+        <script>
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: "{{ session('status') }}",
+                timer: 4000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end',
+                timerProgressBar: true,
+            });
+        </script>
+    @endif
+
+    @if(session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "{{ session('error') }}",
+                timer: 4000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end',
+                timerProgressBar: true,
+            });
+        </script>
+    @endif
 </body>
 
 </html>

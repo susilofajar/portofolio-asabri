@@ -19,6 +19,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         :root {
             --asabri-navy: #002966;
@@ -516,19 +519,48 @@
 
         <div class="content-wrapper">
             @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
-                    <i class="fas fa-check-circle me-3 fs-5 text-success"></i>
-                    <div>{{ session('success') }}</div>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: "{{ session('success') }}",
+                        timer: 3000,
+                        showConfirmButton: false,
+                        toast: true,
+                        position: 'top-end',
+                        timerProgressBar: true,
+                    });
+                </script>
             @endif
 
             @if(session('error'))
-                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
-                    <i class="fas fa-exclamation-circle me-3 fs-5 text-danger"></i>
-                    <div>{{ session('error') }}</div>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: "{{ session('error') }}",
+                        timer: 4000,
+                        showConfirmButton: false,
+                        toast: true,
+                        position: 'top-end',
+                        timerProgressBar: true,
+                    });
+                </script>
+            @endif
+
+            @if(session('status'))
+                <script>
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Info',
+                        text: "{{ session('status') }}",
+                        timer: 3000,
+                        showConfirmButton: false,
+                        toast: true,
+                        position: 'top-end',
+                        timerProgressBar: true,
+                    });
+                </script>
             @endif
 
             {{ $slot }}
@@ -536,6 +568,40 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Global Delete Confirmation
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.delete-confirm')) {
+                e.preventDefault();
+                const form = e.target.closest('form');
+                const message = e.target.closest('.delete-confirm').dataset.message || 'Data yang dihapus tidak dapat dikembalikan!';
+                
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: message,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#002966',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Batal',
+                    reverseButtons: true,
+                    borderRadius: '15px'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            }
+        });
+
+        // Add class to all delete forms found via grep earlier
+        document.addEventListener('DOMContentLoaded', function() {
+            // This is a helper for legacy forms if we don't want to manual edit every single one
+            // but it's better to explicitly add the class to buttons.
+        });
+    </script>
 </body>
 
 </html>

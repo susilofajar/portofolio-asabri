@@ -71,6 +71,7 @@ Route::middleware(['auth', 'role:admin,superadmin'])->group(function () {
     Route::post('/laporan-tahunan', [LaporanTahunanController::class, 'store'])->name('laporan.tahunan.store');
     Route::put('/laporan-tahunan/{id}', [LaporanTahunanController::class, 'update'])->name('laporan.tahunan.update');
     Route::delete('/laporan-tahunan/{id}', [LaporanTahunanController::class, 'destroy'])->name('laporan.tahunan.destroy');
+
 });
 
 // SuperAdmin Only Routes
